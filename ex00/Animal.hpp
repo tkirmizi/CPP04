@@ -6,7 +6,7 @@
 /*   By: taha <taha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 14:01:10 by taha              #+#    #+#             */
-/*   Updated: 2025/02/09 14:01:29 by taha             ###   ########.fr       */
+/*   Updated: 2025/02/09 14:02:57 by taha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,13 @@ class Animal{
 	protected:
 		std::string _type;
 	public:
-		Animal():_type("default"){};
-		Animal(std::string type)
-			:_type(type){};
-		virtual ~Animal(){std::cout << "Animal destructor called" << std::endl;};
-		Animal(const Animal &other){*this = other;}
-		Animal& operator=(const Animal &other)
-		{
-			if (this != &other)
-				this->_type = other._type;
-			return *this;
-		}
-		std::string getType() const{return _type;};
-		virtual void makeSound() const {std::cout << "Animal sound" << std::endl;};
+		Animal();
+		Animal(std::string type);
+		virtual ~Animal();
+		Animal(const Animal &other);
+		Animal& operator=(const Animal &other);
+		std::string getType() const;
+		virtual void makeSound() const;
 };
 
 #endif
