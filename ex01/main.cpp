@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taha <taha@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tkirmizi <tkirmizi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 20:07:22 by taha              #+#    #+#             */
-/*   Updated: 2025/02/09 16:58:06 by taha             ###   ########.fr       */
+/*   Updated: 2025/02/10 17:59:27 by tkirmizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,25 @@
 #include <iostream>
 
 int main() {
-	// Basic test
+
+
+	std::cout << "\n ========= TEST 1 =========\n" << std::endl;
+	std::cout << "=== Animal -> Dog -> Brain Constructor Test ===" << std::endl;
 	const Animal* dog = new Dog();
+	std::cout << "\n=== Animal -> Cat -> Brain Constructor Test ===" << std::endl;
 	const Animal* cat = new Cat();
+	std::cout << "\n === Dog- > Brain -> Animal -> Destructor Test ===" << std::endl;
 	delete dog;
+	std::cout << "\n === Cat -> Brain -> Animal -> Destructor Test ===" << std::endl;
 	delete cat;
 
-	// Deep copy test
+	std::cout << "\n ========= TEST 2 =========" << std::endl;
+	// Copy Constructor Testi (Derin Kopyalama Kontrolü)
 	Dog* originalDog = new Dog();
 	Dog* copyDog = new Dog(*originalDog);
 	delete originalDog;
 	delete copyDog;
 
-	// Array test
 	Animal* animals[4];
 	for (int i = 0; i < 2; i++)
 		animals[i] = new Dog();
@@ -40,6 +46,6 @@ int main() {
 
 	for (int i = 0; i < 4; i++)
 		delete animals[i];
-	
+
 	return 0;
 }

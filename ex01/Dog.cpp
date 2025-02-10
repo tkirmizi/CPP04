@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taha <taha@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tkirmizi <tkirmizi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 14:07:41 by taha              #+#    #+#             */
-/*   Updated: 2025/02/09 17:05:26 by taha             ###   ########.fr       */
+/*   Updated: 2025/02/10 17:48:45 by tkirmizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ Dog::Dog(const Dog &other)
 	{brain = new Brain(*other.brain);
 	std::cout << "Dog copy constructor called" << std::endl;}
 
-Dog& Dog::operator=(const Dog &other){
-	if (this != &other){
-		Animal::operator=(other);
-		Brain* temp = new Brain(*other.brain);
-		delete brain;
-		brain = temp;}
-	return *this;}
+Dog& Dog::operator=(const Dog &other) {
+	if (this != &other) {
+		this->_type = other._type;  
+		delete this->brain;
+		this->brain = new Brain(*other.brain); // Bellek sızıntısını önlemek için doğru kopyalama
+	}
+	return *this;
+}
 
 void Dog::makeSound() const {std::cout << "Woof Woof" << std::endl;};

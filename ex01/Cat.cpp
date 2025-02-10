@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taha <taha@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tkirmizi <tkirmizi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 14:05:35 by taha              #+#    #+#             */
-/*   Updated: 2025/02/09 16:54:32 by taha             ###   ########.fr       */
+/*   Updated: 2025/02/10 17:48:23 by tkirmizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,18 @@ Cat::Cat(){_type = "Cat"; std::cout << "Cat constructor called" << std::endl;
 
 Cat::~Cat(){std::cout << "Cat destructor called" << std::endl;
 	delete brain;};
-	Cat::Cat(const Cat &other) : Animal(other) {
+	
+Cat::Cat(const Cat &other) : Animal(other) {
 		std::cout << "Cat copy constructor called" << std::endl;
 		brain = new Brain(*other.brain);}
 
-Cat& Cat::operator=(const Cat &other){
+Cat& Cat::operator=(const Cat &other) {
 	if (this != &other) {
-		Animal::operator=(other);
-		Brain* temp = new Brain(*other.brain);
-		delete brain;
-		brain = temp;}
-		return *this;}
+		this->_type = other._type;  
+		delete this->brain;
+		this->brain = new Brain(*other.brain); // Bellek sızıntısını önlemek için doğru kopyalama
+	}
+	return *this;
+}
 
 void Cat::makeSound() const {std::cout << "Meow Meow" << std::endl;};
